@@ -1,0 +1,1 @@
+//Here will be the function to decrypt the user data gotten from a scanned qr code
