@@ -32,7 +32,7 @@ async fn main() -> std::io::Result<()> {
             .service(echo)
             .service(generate_qr)
             .route("/hey", web::get().to(manual_hello))
-            .service(Files::new("/", "./Vesperr").index_file("index.html"))
+            .service(Files::new("/", "./FrontEnd").index_file("index.html"))
     })
     .bind(("127.0.0.1", 8080))?
     .run()
