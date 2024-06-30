@@ -1,11 +1,12 @@
 mod qr;
 use actix_web::{get, post, web, App, HttpResponse, HttpServer, Responder};
+use actix_files::Files;
 use qr::qrgen;
 
-#[get("/")]
+/*#[get("/")]
 async fn hello() -> impl Responder {
     HttpResponse::Ok().body("Hello world!")
-}
+}*/
 
 #[post("/echo")]
 async fn echo(req_body: String) -> impl Responder {
@@ -27,10 +28,11 @@ async fn manual_hello() -> impl Responder {
 async fn main() -> std::io::Result<()> {
     HttpServer::new(|| {
         App::new()
-            .service(hello)
+            //.service(hello)
             .service(echo)
             .service(generate_qr)
             .route("/hey", web::get().to(manual_hello))
+            .service(Files::new("/", "./Vesperr").index_file("index.html"))
     })
     .bind(("127.0.0.1", 8080))?
     .run()
