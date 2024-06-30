@@ -8,6 +8,11 @@
   <meta content="" name="description">
   <meta content="" name="keywords">
 
+  <!-- Bootstrap CSS -->
+  <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+  <!-- Bootstrap Icons -->
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" rel="stylesheet">
+
   <!-- Favicons -->
   <link href="assets/img/favicon.png" rel="icon">
   <link href="assets/img/apple-touch-icon.png" rel="apple-touch-icon">
@@ -133,7 +138,42 @@
             <p>
               Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Duis aute irure dolor in reprehenderit
             </p>
-            <a href="#" class="about-btn align-self-center align-self-xl-start"><span>Try it</span> <i class="bi bi-chevron-right"></i></a>
+            <a href="#" class="about-btn align-self-center align-self-xl-start" data-toggle="modal" data-target="#myModal"> <span>Try it</span> <i class="bi bi-chevron-right"></i></a>
+            <!-- Modal -->
+            <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+              <div class="modal-dialog" role="document">
+                <div class="modal-content">
+                  <div class="modal-header">
+                    <h5 class="modal-title" id="myModalLabel">Enter Details</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                      <span aria-hidden="true">&times;</span>
+                    </button>
+                  </div>
+                  <div class="modal-body">
+                    <!-- Form for entering details -->
+                    <form id="detailsForm">
+                      <div class="form-group">
+                        <label for="name">Name</label>
+                        <input type="text" class="form-control" id="name" placeholder="Enter your name" required>
+                      </div>
+                      <div class="form-group">
+                        <label for="phone">Phone Number</label>
+                        <input type="tel" class="form-control" id="phone" placeholder="Enter your phone number" required>
+                      </div>
+                      <div class="form-group">
+                        <label for="email">Email address</label>
+                        <input type="email" class="form-control" id="email" placeholder="Enter your email" required>
+                      </div>
+                      <!-- Add more form fields as needed -->
+                    </form>
+                  </div>
+                  <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                    <button type="submit" form="detailsForm" class="btn btn-primary">Submit</button>
+                  </div>
+                </div>
+              </div>
+            </div>
           </div>
 
           <div class="col-xl-7" data-aos="fade-up" data-aos-delay="200">
@@ -287,76 +327,6 @@
       </div>
 
     </section><!-- /Services Section -->
-
-    <!-- Alt Services Section -->
-    <section id="alt-services" class="alt-services section">
-
-      <div class="container" data-aos="fade-up" data-aos-delay="100">
-
-        <div class="row gy-4">
-
-          <div class="col-lg-6" data-aos="zoom-in" data-aos-delay="200">
-            <div class="service-item position-relative">
-              <div class="img">
-                <img src="assets/img/services-1.jpg" class="img-fluid" alt="">
-              </div>
-              <div class="details">
-                <a href="service-details.html" class="stretched-link">
-                  <h3>Nesciunt Mete</h3>
-                </a>
-                <p>Provident nihil minus qui consequatur non omnis maiores. Eos accusantium minus dolores iure perferendis.</p>
-              </div>
-            </div>
-          </div><!-- End Service Item -->
-
-          <div class="col-lg-6" data-aos="zoom-in" data-aos-delay="300">
-            <div class="service-item position-relative">
-              <div class="img">
-                <img src="assets/img/services-2.jpg" class="img-fluid" alt="">
-              </div>
-              <div class="details">
-                <a href="service-details.html" class="stretched-link">
-                  <h3>Eosle Commodi</h3>
-                </a>
-                <p>Ut autem aut autem non a. Sint sint sit facilis nam iusto sint. Libero corrupti neque eum hic non ut nesciunt dolorem.</p>
-              </div>
-            </div>
-          </div><!-- End Service Item -->
-
-          <div class="col-lg-6" data-aos="zoom-in" data-aos-delay="400">
-            <div class="service-item position-relative">
-              <div class="img">
-                <img src="assets/img/services-3.jpg" class="img-fluid" alt="">
-              </div>
-              <div class="details">
-                <a href="service-details.html" class="stretched-link">
-                  <h3>Ledo Markt</h3>
-                </a>
-                <p>Ut excepturi voluptatem nisi sed. Quidem fuga consequatur. Minus ea aut. Vel qui id voluptas adipisci eos earum corrupti.</p>
-              </div>
-            </div>
-          </div><!-- End Service Item -->
-
-          <div class="col-lg-6" data-aos="zoom-in" data-aos-delay="500">
-            <div class="service-item position-relative">
-              <div class="img">
-                <img src="assets/img/services-4.jpg" class="img-fluid" alt="">
-              </div>
-              <div class="details">
-                <a href="service-details.html" class="stretched-link">
-                  <h3>Asperiores Commodit</h3>
-                </a>
-                <p>Non et temporibus minus omnis sed dolor esse consequatur. Cupiditate sed error ea fuga sit provident adipisci neque.</p>
-                <a href="service-details.html" class="stretched-link"></a>
-              </div>
-            </div>
-          </div><!-- End Service Item -->
-
-        </div>
-
-      </div>
-
-    </section><!-- /Alt Services Section -->
 
     <!-- Features Section -->
     <section id="features" class="features section">
@@ -864,6 +834,11 @@
 
   <!-- Preloader -->
   <div id="preloader"></div>
+
+  <!-- Bootstrap JavaScript and dependencies -->
+  <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.4/dist/umd/popper.min.js"></script>
+  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
 
   <!-- Vendor JS Files -->
   <script src="assets/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
