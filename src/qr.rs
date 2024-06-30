@@ -2,7 +2,7 @@ use qrcodegen::QrCode;
 use qrcodegen::QrCodeEcc;
 use image::{Luma, ImageBuffer};
 
-fn qrgen() {
+pub fn qrgen() {
     // Contact information
     let name = "John Doe";
     let phone = "+1234567890";
