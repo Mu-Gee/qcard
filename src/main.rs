@@ -1,5 +1,6 @@
-//mod qr;
+mod qr;
 use actix_web::{get, post, web, App, HttpResponse, HttpServer, Responder};
+use qr::qrgen;
 
 #[get("/")]
 async fn hello() -> impl Responder {
@@ -11,9 +12,11 @@ async fn echo(req_body: String) -> impl Responder {
     HttpResponse::Ok().body(req_body)
 }
 
-#[get("/hello")]
-async fn hllo() -> impl Responder {
-    HttpResponse::Ok().body("hello nice try")
+
+#[get("/generate_qr")]
+async fn generate_qr() -> impl Responder {
+    qrgen();
+    HttpResponse::Ok().body("QR code generated and saved as contact_qr_code.png")
 }
 
 async fn manual_hello() -> impl Responder {
@@ -26,7 +29,7 @@ async fn main() -> std::io::Result<()> {
         App::new()
             .service(hello)
             .service(echo)
-            .service(hllo)
+            .service(generate_qr)
             .route("/hey", web::get().to(manual_hello))
     })
     .bind(("127.0.0.1", 8080))?
