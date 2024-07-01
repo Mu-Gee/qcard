@@ -199,3 +199,48 @@
   document.addEventListener('scroll', navmenuScrollspy);
 
 })();
+
+// Handle user data from the form
+document.getElementById('detailsForm').addEventListener('submit', function(event) {
+  event.preventDefault(); // Prevents default form submission
+
+  // Get form values
+  let name =document.getElementById('name').value.trim();
+  let phone =document.getElementById('phone').value.trim();
+  let email =document.getElementById('email').value.trim();
+
+  // Perform validation
+  if(name === '' || phone === '' || email === '') {
+    alert('Please enter name, phone number and email.');
+    return;
+  }
+
+  // Prepare data to be sent to server
+  const formData = {
+    name: name,
+    phone: phone,
+    email: email
+  };
+
+  // Send data to the Rust server using fetch
+  fetch('/submit-details', {
+    method: 'POST',
+    headers: {
+      'Content-Type': 'application/json'
+    },
+    body: JSON.stringify(formData)
+  })
+  .then(response => response.json())
+  .then(data => {
+    console.log('Success:', data);
+    alert('Data submitted successfully.');
+  })
+  .catch((error) => {
+    console.error('Error:', error);
+    alert('There was an errot submitting the data');
+  });
+
+  // Close the modal after successful submission
+  $('#myModal').modal('hide');
+
+});
