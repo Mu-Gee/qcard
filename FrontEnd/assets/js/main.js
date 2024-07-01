@@ -230,17 +230,30 @@ document.getElementById('detailsForm').addEventListener('submit', function(event
     },
     body: JSON.stringify(formData)
   })
-  .then(response => response.json())
+  .then(response => {
+    if(!response.ok) {
+      throw new Error('Network response was not ok');
+    }
+    return response.json();
+  })
   .then(data => {
     console.log('Success:', data);
     alert('Data submitted successfully.');
+
+    // Reset the form for next input
+    document.getElementById('detailsForm').reset();
+    
+
+    console.log('closing modal');
+    // Close the modal after successful submission
+    // Trigger the click event on the close button because $('#myModal').modal('hide'); doesn't work
+    document.getElementById('closeButton').click();
+
+    //$('#myModal').modal('hide');
   })
   .catch((error) => {
     console.error('Error:', error);
-    alert('There was an errot submitting the data');
+    alert('There was an error submitting the data');
   });
-
-  // Close the modal after successful submission
-  $('#myModal').modal('hide');
 
 });
