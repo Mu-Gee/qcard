@@ -985,6 +985,8 @@ dependencies = [
  "actix-web",
  "image",
  "qrcodegen",
+ "serde",
+ "serde_json",
 ]
 
 [[package]]
