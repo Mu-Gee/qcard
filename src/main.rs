@@ -14,13 +14,24 @@ struct FormData {
 
 #[post("/submit-details")]
 async fn submit_details(form: web::Json<FormData>) -> impl Responder {
+
+    // This is for debugging on the rust side
     println!("Received form data: {:?}", form);
+
+
     // Will process form data later
+
+    /* // For front end debugging uncomment this block to return user details to the console(on the browser)
     let response = format!(
         "Received details: Name: {}, Phone: {}, Email: {}",
         form.name, form.phone, form.email
     );
+    // Send a JSON response back to the client
     HttpResponse::Ok().json(json!({"status": "success", "message": response}))
+    */
+
+    // Should above block be uncommented comment this out
+    HttpResponse::Ok().json(json!({"status": "success", }))
 }
 
 #[get("/submit-details")]
