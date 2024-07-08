@@ -41,12 +41,13 @@ async fn submit_details_get() -> impl Responder {
     HttpResponse::Ok().body("Nice try this endpoint is for form submissions only.")
 }
 
-
+/* This endpoint is for testing the qrgen function directly
 #[get("/generate_qr")]
 async fn generate_qr() -> impl Responder {
     qrgen("Jane Doe", "+1234567890", "janedoe@found.com");
     HttpResponse::Ok().body("QR code generated and saved as contact_qr_code.png")
 }
+*/
 
 async fn manual_hello() -> impl Responder {
     HttpResponse::Ok().body("Hey there!")
@@ -56,7 +57,7 @@ async fn manual_hello() -> impl Responder {
 async fn main() -> std::io::Result<()> {
     HttpServer::new(|| {
         App::new()
-            .service(generate_qr)
+            //.service(generate_qr)
             .service(submit_details)
             .service(submit_details_get)
             .route("/hey", web::get().to(manual_hello))
