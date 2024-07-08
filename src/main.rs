@@ -18,6 +18,8 @@ async fn submit_details(form: web::Json<FormData>) -> impl Responder {
     // This is for debugging on the rust side
     println!("Received form data: {:?}", form);
 
+    qrgen(&form.name, &form.phone, &form.email);
+
 
     // Will process form data later
 
@@ -42,7 +44,7 @@ async fn submit_details_get() -> impl Responder {
 
 #[get("/generate_qr")]
 async fn generate_qr() -> impl Responder {
-    qrgen();
+    qrgen("Jane Doe", "+1234567890", "janedoe@found.com");
     HttpResponse::Ok().body("QR code generated and saved as contact_qr_code.png")
 }
 
@@ -60,7 +62,7 @@ async fn main() -> std::io::Result<()> {
             .route("/hey", web::get().to(manual_hello))
             .service(Files::new("/", "./FrontEnd").index_file("index.html"))
     })
-    .bind(("0.0.0.0", 8080))?
+    .bind(("127.0.0.1", 8080))?
     .run()
     .await
 }
