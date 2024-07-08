@@ -41,7 +41,7 @@ async fn submit_details_get() -> impl Responder {
     HttpResponse::Ok().body("Nice try this endpoint is for form submissions only.")
 }
 
-/* This endpoint is for testing the qrgen function directly
+/* This endpoint is for testing the qrgen
 #[get("/generate_qr")]
 async fn generate_qr() -> impl Responder {
     qrgen("Jane Doe", "+1234567890", "janedoe@found.com");
