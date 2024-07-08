@@ -37,26 +37,26 @@ pub fn qrgen(name: &str, phone: &str, email: &str) {
     */ 
 
       // Generate the QR code
-      let qr = QrCode::encode_text(&vcard, QrCodeEcc::Medium).unwrap();
+    let qr = QrCode::encode_text(&vcard, QrCodeEcc::Medium).unwrap();
 
-      // Create the image buffer
-      let size = qr.size();
-      let scale = 10; // scale factor for the QR code image
-      let border = 4; // border size for the QR code image
-      let img_size = (size + border * 2) * scale;
-      let mut img = ImageBuffer::new(img_size as u32, img_size as u32);
-  
-      // Fill the image buffer with the QR code data
-      for y in 0..img_size {
-          for x in 0..img_size {
-              let color = if qr.get_module(x / scale - border, y / scale - border) {
-                  Luma([0u8]) // Black
-              } else {
-                  Luma([255u8]) // White
-              };
-              img.put_pixel(x as u32, y as u32, color);
-          }
-      }
+    // Create the image buffer
+    let size = qr.size();
+    let scale = 10; // scale factor for the QR code image
+    let border = 4; // border size for the QR code image
+    let img_size = (size + border * 2) * scale;
+    let mut img = ImageBuffer::new(img_size as u32, img_size as u32);
+
+    // Fill the image buffer with the QR code data
+    for y in 0..img_size {
+        for x in 0..img_size {
+            let color = if qr.get_module(x / scale - border, y / scale - border) {
+                Luma([0u8]) // Black
+            } else {
+                Luma([255u8]) // White
+            };
+            img.put_pixel(x as u32, y as u32, color);
+        }
+    }
 
 
     // Save the image as a PNG file
