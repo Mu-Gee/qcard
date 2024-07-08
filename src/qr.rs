@@ -2,11 +2,13 @@ use qrcodegen::QrCode;
 use qrcodegen::QrCodeEcc;
 use image::{Luma, ImageBuffer};
 
-pub fn qrgen() {
-    // Contact information
+pub fn qrgen(name: &str, phone: &str, email: &str) {
+    // Contact information for testing purpose only
+    /*
     let name = "John Doe";
     let phone = "+1234567890";
     let email = "johndoe@example.com";
+    */
 
     // Create a vCard string
     let vcard = format!(
